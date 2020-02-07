@@ -1,3 +1,7 @@
+/**
+ * 使用代理跨域的方式
+ * @type {{devServer: {proxy: {"/api": {changeOrigin: boolean, pathRewrite: {"/api": string}, target: string}}, port: number, host: string}}}
+ */
 module.exports = {
   devServer:{
     host:'localhost',
