@@ -20,9 +20,15 @@ export default {
   mounted(){
 
     //通过加载静态json文件
-      this.axios.get('/mock/user/login.json').then((res) =>{
-        this.res = res;
-      })
+    //   this.axios.get('/mock/user/login.json').then((res) =>{
+    //     this.res = res;
+    //   })
+
+    //本地集成mockjs 实现数据mock
+    // this.axios.get('/user/login').then((res)=>{
+    //   this.res = res;
+    // })
+
   }
 }
 </script>
