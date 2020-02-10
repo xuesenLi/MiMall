@@ -1,7 +1,12 @@
 import Vue from 'vue'
 import router from './router'
 import axios from 'axios'
-import VueAxios from 'Vue-axios'
+import VueAxios from 'vue-axios'
+import VueLazyLoad from 'vue-lazyload'
+import VueCookie from 'vue-cookie'
+import { Message } from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import store from './store'
 import App from './App.vue'
 //import env from './env'
 
@@ -18,26 +23,39 @@ axios.defaults.timeout = 8000;  //8s
 //axios.defaults.baseURL = env.baseURL;
 
 //接口错误拦截 做错误拦截
-axios.interceptors.response.use(function (response) {
+
+axios.interceptors.response.use(function(response){
   let res = response.data;
+  let path = location.hash;  //获取路由 hash 路由
   if(res.status == 0){
-    //0 表示成功
     return res.data;
   }else if(res.status == 10){
-    //10 表示未登录  要看后台返回的状态码
-    window.location.href = '/#/login' //有#号的路由 ： 哈希路由
+    if (path != '#/index'){
+      window.location.href = '/#/login';
+    }
+    return Promise.reject(res);
   }else{
-    //表示报错信息
-    alert(res.msg);
+    Message.warning(res.msg);
+    return Promise.reject(res);
   }
+},(error)=>{
+  let res = error.response;
+  Message.error(res.data.message);
+  return Promise.reject(error);
 });
 
 
 Vue.use(VueAxios,axios);
+Vue.use(VueCookie);
+Vue.use(VueLazyLoad,{
+  loading:''
+});
 //生产环境
 Vue.config.productionTip = false
+Vue.prototype.$message = Message;
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')
