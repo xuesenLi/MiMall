@@ -79,7 +79,7 @@
     methods:{
       // 获取购物车列表
       getCartList(){
-        this.axios.get('/carts').then((res)=>{
+        this.axios.get('/carts/list').then((res)=>{
           this.renderData(res);
         })
       },
