@@ -15,13 +15,15 @@ module.exports = {
         }
       }
     }
-  }
+  },
   // publicPath:'/app',
   // outputDir:'dist',
   // indexPath:'index2.html',
   // lintOnSave:false,
-/*  productionSourceMap:true,
+  //打包的时候，是否下载源码
+  productionSourceMap:false,
+  //删除预加载
   chainWebpack:(config)=>{
     config.plugins.delete('prefetch');
-  }*/
+  }
 }

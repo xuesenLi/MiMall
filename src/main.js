@@ -52,6 +52,8 @@ Vue.use(VueLazyLoad,{
 });
 //生产环境
 Vue.config.productionTip = false
+
+//Element UI
 Vue.prototype.$message = Message;
 
 new Vue({

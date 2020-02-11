@@ -167,6 +167,7 @@
       logout(){
         this.axios.post('/user/logout').then(()=>{
           this.$message.success('退出成功');
+          //将cookie设置过期
           this.$cookie.set('userId','',{expires:'-1'});
           this.$store.dispatch('saveUserName','');
           this.$store.dispatch('saveCartCount','0');

@@ -20,6 +20,7 @@ export default new Router({
                 }, {
                     path: '/product/:id',
                     name: 'product',
+                    //路由按需加载
                     component: () => import('./pages/product.vue')
                 }, {
                     path: '/detail/:id',
