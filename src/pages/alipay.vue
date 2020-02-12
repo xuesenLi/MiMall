@@ -24,11 +24,11 @@
     },
     methods:{
       paySubmit(){
-        this.axios.post('/pay',{
+        this.axios.post('/pay/create',{
           orderId:this.orderId,
           orderName:'Vue高仿小米商城',
           amount:this.payment,//单位元
-          payType:1 //1支付宝，2微信
+          payType:'ALIPAY_PC' //1支付宝，2微信
         }).then((res)=>{
           this.content = res.content;
           setTimeout(()=>{

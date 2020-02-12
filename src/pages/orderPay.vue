@@ -113,11 +113,11 @@ export default{
       if(payType == 1){
         window.open('/#/order/alipay?orderId='+this.orderId+'&payment=' + this.payment,'_blank');
       }else{
-        this.axios.post('/pay',{
+        this.axios.post('/pay/create',{
           orderId:this.orderId,
           orderName:'Vue高仿小米商城',
           amount:this.payment,//单位元
-          payType:2 //1支付宝，2微信
+          payType:'WXPAY_NATIVE' //1支付宝，2微信
         }).then((res)=>{
           QRCode.toDataURL(res.content)
           .then(url => {

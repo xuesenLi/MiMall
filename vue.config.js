@@ -8,7 +8,7 @@ module.exports = {
     port:8080,
     proxy:{
       '/api':{
-        target:'http://mall-pre.springboot.cn',
+        target:'http://xuesenli.top:8081',
         changeOrigin:true,
         pathRewrite:{   //转发地址
           '/api':''
